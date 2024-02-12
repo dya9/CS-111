@@ -1,0 +1,460 @@
+#Final project App(Community) by Deeya Rawat and Darya Reutenko
+# Summer CS 111, Reckinger
+#This program familiarizes female identifying or non binary users starting out in computing with Break Through Tech Chicago by giving an introduction, 
+meeting faculty, and learning about BTTC programs
+
+import turtle
+import random
+import time
+import math
+
+def draw_building_1(): #creating function for making building 1
+    size = 150
+    color = "black"
+    t.fillcolor(color)
+    t.pencolor("black")
+    t.pendown()
+    t.begin_fill()
+    t.left(90)
+    t.forward(size)
+    t.right(90)
+    t.forward(size * 0.2)
+    t.left(90)
+    t.forward(size)
+    t.right(90)
+    t.forward(size * 0.3)
+    t.right(90)
+    t.forward(size)
+    t.left(90)
+    t.forward(size * 0.2)
+    t.right(90)
+    t.forward(size)
+    t.right(90)
+    t.forward(size * 0.7)
+    t.end_fill()
+    t.penup()
+    t.right(180)
+    t.forward(size * 0.7)
+
+def draw_building_2(): #function for creating building 2
+    size = 300
+    color = "silver"
+    t.fillcolor(color)
+    t.pencolor("silver")
+    t.pendown()
+    t.begin_fill()
+    t.left(90)
+    t.forward(size)
+    t.right(90)
+    t.forward(size * 0.3)
+    t.right(90)
+    t.forward(size)
+    t.right(90)
+    t.forward(size * 0.3)
+    t.end_fill()
+    t.penup()
+    t.right(180)
+    t.forward(size * 0.3)
+
+def draw_building_3(): #create function for building 3
+    size = 250
+    angle = 60
+    color = "midnight blue"
+    t.fillcolor(color)
+    t.pencolor("midnight blue")
+    t.forward(size * 0.3)
+    t.pendown()
+    t.begin_fill()
+    t.left(90)
+    t.forward(size)
+    t.left(180 - angle)
+    t.forward(0.3 * size / math.sin(angle / 180 * math.pi))
+    t.left(angle)
+    t.forward(size - size * 0.3 / math.tan(angle / 180 * math.pi))
+    t.left(90)
+    t.forward(0.3 * size)
+    t.end_fill()
+    t.penup()
+
+def draw_building_4(): #create function for building 4
+    size = 300
+    angle = 45
+    color = "steel blue"
+    t.fillcolor(color)
+    t.pencolor("steel blue")
+    t.forward(0.4 * size * math.sin(angle / 180 * math.pi))
+    t.pendown()
+    t.begin_fill()
+    t.left(90)
+    t.forward(size)
+    t.left(45)
+    t.forward(0.2 * size)
+    t.right(45)
+    t.forward(0.3 * size)
+    t.right(180)
+    t.forward(0.3 * size)
+    t.right(45)
+    t.forward(0.2 * size)
+    t.left(45)
+    t.forward(size)
+    t.left(90)
+    t.forward(0.4 * size * math.sin(angle/ 180 * math.pi))
+    t.end_fill()
+    t.penup()
+
+def setup(s,t): #set up before chicago skyline is drawn  
+    s.bgcolor("alice blue")
+    t.speed(100)
+    t.pencolor("white")
+    t.width(3)
+    t.penup()
+    t.goto(-700, -400)
+
+s = turtle.getscreen() #initialize turtle and screen and call set up function
+t = turtle.Turtle()
+setup(s,t)
+
+i = 0  #loop that randomly calls the building functions to create a skyline
+for i in range(0,22):
+    building_type = random.randint(0,4)
+    if building_type == 0:
+        draw_building_1()
+    elif building_type == 1:
+        draw_building_2()
+    elif building_type == 2:
+        draw_building_3()
+    elif building_type == 3:
+        draw_building_4()
+    i += 1
+
+turtle.addshape("chicago.gif") #initialize chicago logo
+chicago = turtle.Turtle()
+chicago.penup()
+chicago.hideturtle()
+chicago.goto(300,200)
+chicago.shape("chicago.gif")
+chicago.showturtle()
+
+def stall(): #create function that causes a pause between slideshow images
+    tt = turtle.Turtle()
+    tt.hideturtle()
+    tt.penup()
+    tt.speed(1)
+    tt.forward(600)
+
+turtle.addshape("bttc.gif") #initialize bttc logo
+s = turtle.getscreen()
+bttc = turtle.Turtle()
+bttc.penup()
+
+turtle.addshape("click_here_1.gif") #initialize first button
+click_here_1 = turtle.Turtle()
+click_here_1.penup()
+
+turtle.addshape("click_here_2.gif") #initialize second button
+click_here_2 = turtle.Turtle()
+click_here_2.penup()
+
+turtle.addshape("click_here_3.gif") #initialize third button
+click_here_3 = turtle.Turtle()
+click_here_3.penup()
+
+turtle.addshape("click_here_4.gif") #initialize fourth button
+click_here_4 = turtle.Turtle()
+click_here_4.penup()
+click_here_4.hideturtle()
+
+turtle.addshape("click_here_5.gif") #initialize fifth button
+click_here_5 = turtle.Turtle()
+click_here_5.penup()
+click_here_5.hideturtle()
+
+turtle.addshape("click_here_6.gif") #initialize sixth button
+click_here_6 = turtle.Turtle()
+click_here_6.penup()
+click_here_6.hideturtle()
+
+turtle.addshape("click_here_7.gif") #initialize seventh button
+click_here_7 = turtle.Turtle()
+click_here_7.penup()
+click_here_7.hideturtle()
+
+def bttc_walks(turtle, start, end): #animate bttc logo
+    bttc.goto(start[0], start[1])
+    bttc.showturtle()
+    bttc.speed(5)
+    bttc.goto(end[0], end[1])
+
+def slide_show_func(x,y): #loop that iterates through photots to display them as slideshow and display message
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    text5 = turtle.Turtle()
+    text5.penup()
+    text5.goto(0,260)
+    text5.write("Go to this website to become a Break Through Tech member today!" ,False, align = "center", font = ("Serif", 25))
+    text5.goto(0,-300)
+    text5.hideturtle()
+    text5.write("https://chicago.breakthroughtech.org/get-involved/membership/" ,False, align = "center", font = ("Serif", 25))
+    screen = turtle.getscreen()
+    turtle.colormode(255)
+  
+    list_photos = ["bttc.gif","bttc_building.gif","girl_power.gif","laptop.gif","bttc2.gif"]
+    photo_count = 0
+
+    loop_thru = True 
+    while loop_thru == True:
+        for line in list_photos:
+            screen.bgpic(list_photos[photo_count % 5])
+            stall()
+            photo_count += 1
+            loop_thru = True
+
+def CS111(x,y): #creating function for CS 111 introduction
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    text4 = turtle.Turtle()
+    text4.penup()
+    text4.write("CS 111 is a fast paced 8 week foray into python, a beginner friendly \nlanguage that makes coding acessible. It is taught by Professor Reckinger \nand its tuition is waived because of Break Through Tech. " ,False, align = "center", font = ("Serif", 20))
+    click_here_4.shape("click_here_4.gif")
+    click_here_4.goto(-100,-100)
+    click_here_4.showturtle() #show 4th button
+    click_here_4.onclick(slide_show_func)
+
+def Spring_Intern(x,y): #create function for sprinternship info
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    text5 = turtle.Turtle()
+    text5.penup()
+    text5.write("Sprinternships are 3 week immersive paid \ninternships that give one an opportunity\n to add work experience to their résumés \nvery early into their computing journey. During the \ninternships, the student becomes ingrained \nin their host company's culture and tackles real business challenges." ,False, align = "center", font = ("Serif", 20))
+    click_here_5.shape("click_here_5.gif")
+    click_here_5.goto(-100,-100)
+    click_here_5.showturtle() #show 5th button
+    click_here_5.onclick(slide_show_func)
+
+def Tech_in_res(x,y): #tech in residence info function
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    text6 = turtle.Turtle()
+    text6.penup()
+    text6.write("The Tech in Residence program consists of a corporate-sponsored UIC computer science \nelective with the possibility of a summer internship or full-time job with the company after \nthe course ends. Completion of the course allows one to earn 3 UIC credits. You can only \napply for Tech in Residence if you have completed a sprinternship or an internship." ,False, align = "center", font = ("Serif", 20))
+    click_here_6.shape("click_here_6.gif") #show 6th button
+    click_here_6.goto(-100,-100)
+    click_here_6.showturtle() 
+    click_here_6.onclick(slide_show_func)
+
+def error_page(x,y): #error page to be displayed if user enters invalid activity 
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    turtle.addshape("error_pic.gif") #initialize and use error image
+    error_pic = turtle.Turtle()
+    error_pic.penup()
+    error_pic.shape("error_pic.gif") 
+    error_pic.goto(0,100)
+    text7 = turtle.Turtle()
+    text7.penup()
+    text7.goto(0,-100)
+    text7.write("It seems like you have entered an invalid program name.",False, align = "center", font = ("Serif", 20))
+    #using 7th button
+    click_here_7.shape("click_here_7.gif")
+    click_here_7.goto(0,-200)
+    click_here_7.showturtle() 
+    click_here_7.onclick(slide_show_func)
+
+def bttc_activities(x,y): #function with textbox that takes in user input and displays activity
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    text3 = turtle.Turtle()
+    text3.penup()
+    text3.goto(0,250)
+    text3.write("Break Through Tech Programs",False, align='left', font=("Serif", 30))
+    text3.goto(0,0)
+    text3.write ("CS 111, Spring Internships, Tech in Residence",False, align='center', font=("Serif", 35))
+    sc = turtle.Screen()
+    sc.setup(400,300)
+    #create textbox to get input from user
+    user_activity = turtle.textinput("BTTC Activities","Enter what activity you would like to learn about")
+    #call appropriate function based on user input
+    if user_activity.lower() == "cs 111":
+        CS111(x,y)
+    elif user_activity.lower() == "spring internships":
+        Spring_Intern(x,y)
+    elif user_activity.lower() == "tech in residence":
+        Tech_in_res(x,y)
+    else:
+        error_page(x,y)
+        
+#initialize Amita turtle
+amita = turtle.Turtle()
+turtle.addshape("Amita_Shetty.gif")
+amita.penup()
+amita.hideturtle()
+
+#initialize Melissa turtle
+melissa = turtle.Turtle()
+turtle.addshape("Melissa Hernandez.gif")
+melissa.hideturtle()
+
+#initialize Shanon turtle
+shanon = turtle.Turtle()
+turtle.addshape("Shanon Reckinger.gif")
+shanon.hideturtle()
+
+#initialize Elena turtle
+elena = turtle.Turtle()
+turtle.addshape("Elena Lathos.gif")
+elena.hideturtle()
+
+#initialize Dale turtle
+dale = turtle.Turtle()
+turtle.addshape("Dale Reed.gif")
+dale.hideturtle()
+
+def amitaInformation(x,y): #function to read Amita's info from text file and display to user
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    amita_file = open("Amita Information")
+    amita_info = amita_file.read()
+    text.goto(0,0)
+    text.write(amita_info, False, align = "center", font=("Serif", 35)) 
+    click_here_3.shape("click_here_3.gif") 
+    click_here_3.goto(0, -250)
+    click_here_3.showturtle()
+    click_here_3.onclick(bttc_activities) #use third button
+
+def melissaInformation(x,y): #function to read Melissa's info from text file and display to user
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    melissa_file = open("Melissa Information")
+    melissa_info = melissa_file.read()
+    text.hideturtle()
+    text.goto(0,0)
+    text.write(melissa_info, False, align = "center", font=("Serif", 35)) 
+    click_here_3.shape("click_here_3.gif")
+    click_here_3.goto(0, -250)
+    click_here_3.showturtle()
+    click_here_3.onclick(bttc_activities) #use third button
+
+def shanonInformation(x,y): #function to read Shanon's info from text file and display to user
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    shanon_file = open("Shanon Information")
+    shanon_info = shanon_file.read()
+    text.goto(0,0)
+    text.write(shanon_info, False, align = "center", font=("Serif", 35)) 
+    click_here_3.shape("click_here_3.gif")
+    click_here_3.goto(0, -250)
+    click_here_3.showturtle()
+    click_here_3.onclick(bttc_activities) #use third button
+
+def elenaInformation(x,y): #function to read Elena's info from text file and display to user
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    elena_file = open("Elena Information")
+    elena_info = elena_file.read()
+    text.goto(0,0)
+    text.write(elena_info, False, align = "center", font=("Serif", 25))
+    click_here_3.shape("click_here_3.gif")
+    click_here_3.goto(0, -250)
+    click_here_3.showturtle()
+    click_here_3.onclick(bttc_activities) #use third button
+
+def daleInformation(x,y): #function to read Dale's info from text file and display to user
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    dale_file = open("Dale Information")
+    dale_info = dale_file.read()
+    text.goto(0,0)
+    text.write(dale_info,False,align = "center", font =("Serif",35))
+    click_here_3.shape("click_here_3.gif")
+    click_here_3.goto(0, -250)
+    click_here_3.showturtle()
+    click_here_3.onclick(bttc_activities) #use third button
+
+def addFaculty(x,y): #function that displays all faculty members photos + text
+    turtle.clearscreen()
+    s.bgcolor("alice blue")
+    text.goto(0,300)
+    text.write("Meet the Faculty", False, align = "center", font = ("Serif", 35))
+    text.goto(0,200)
+    text.write("Wait for all images and text to load and then\nproceed to click an image to learn more!", False, align = "center", font = ("Serif",25))
+    amita.showturtle()
+    amita.shape("Amita_Shetty.gif")
+    amita.goto(-500,0)
+    text.goto(-500,-300)
+    text.write("Amita\nShetty", False, align = "center", font = ("Serif", 25))
+    amita.onclick(amitaInformation) #button that sends user to new page that displays one's information
+
+    melissa.shape("Melissa Hernandez.gif")
+    melissa.penup()
+    melissa.goto(-250, 0)
+    melissa.showturtle()
+    text.goto(-250, -300)
+    text.write("Melissa\nHernandez", False, align = "center", font = ("Serif", 25))
+    melissa.onclick(melissaInformation)  #button that sends user to new page that displays one's information
+
+    shanon.shape("Shanon Reckinger.gif")
+    shanon.penup()
+    shanon.goto(0, 0)
+    shanon.showturtle()
+    text.goto(0, -300)
+    text.write("Shanon\nReckinger", False, align = "center", font = ("Serif", 25))
+    shanon.onclick(shanonInformation)  #button that sends user to new page that displays one's information
+
+    elena.shape("Elena Lathos.gif")
+    elena.penup()
+    elena.goto(250, 0)
+    elena.showturtle()
+    text.goto(250, -300)
+    text.write("Elena\nLathos", False, align = "center", font = ("Serif", 25))
+    elena.onclick(elenaInformation)  #button that sends user to new page that displays one's information
+
+    dale.shape("Dale Reed.gif")
+    dale.penup()
+    dale.goto(500,0)
+    dale.showturtle()
+    text.goto(500,-300)
+    text.write("Dale\nReed", False, align = "center", font = ("Serif", 25))
+    dale.onclick(daleInformation)  #button that sends user to new page that displays one's information
+
+def brief_overview(x,y): #function that displays bttc mission statement
+    turtle.clearscreen()
+    s.bgcolor("alice blue") 
+    text2 = turtle.Turtle() 
+    text2.penup()
+    text2.goto(0,300)
+    text2.write("Brief Overview",False, align='center', font=("Serif", 30))
+    text2.goto(0,100)
+    text2.write("Break Through Tech's goal is to empower female and non-binary computing \nstudents into pursuing successful careers in tech. It accomplishes this goal \nwith its 200 industry partners. The company prizes potential over privilege and \nhopes to build a more inclusive tech ecosystem. ",False, align='center', font=("Serif", 23))
+    text2.goto(0,0)
+    text2.write("To learn about BTTC programs, click the button below",False, align='center', font=("Serif", 20)) 
+    text2.hideturtle()
+    click_here_2.shape("click_here_2.gif")
+    click_here_2.goto(0, -250)
+    click_here_2.showturtle()
+    click_here_2.onclick(addFaculty) #use button two and calls add faculty
+
+#Homescreen that takes in user's name through input from textbox
+name = turtle.textinput("Welcome","Enter your name to begin")
+s.clearscreen()
+screen = turtle.Screen()
+screen.bgcolor("alice blue")
+#second screen that displays message to user 
+text = turtle.Turtle()
+text.penup()
+text.goto(0,100)
+text.write("Hi " + name + ","+" "+"are you a female identifying or non-binary student \ninterested in computing but don't know where to begin your journey?",False, align='center', font=("Serif", 28))
+text.hideturtle()
+bttc.shape("bttc.gif")
+bttc.hideturtle()
+bttc_walks(bttc,[-300,400],[-300,-100])
+click_here_1.hideturtle()
+click_here_1.goto(300,-200)
+click_here_1.shape("click_here_1.gif")
+click_here_1.showturtle()
+#call function to get bttc logo to move
+click_here_1.onclick(brief_overview) #button one sends user to bttc mission statement
+
+s.listen()
+turtle.listen()
+s.mainloop()
+turtle.mainloop()
